@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Unlock Puzzle</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f0f0f0;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 150px);
+            grid-gap: 10px;
+        }
+        .cell {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            background: #ccc;
+            overflow: hidden;
+        }
+        .cell img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(10px);
+            transition: filter 0.5s;
+        }
+        .cell.unlocked img {
+            filter: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div class="cell" id="cell-1"><img src="image1.jpg" alt="Puzzle Piece"></div>
+        <div class="cell" id="cell-2"><img src="image2.jpg" alt="Puzzle Piece"></div>
+        <div class="cell" id="cell-3"><img src="image3.jpg" alt="Puzzle Piece"></div>
+        <div class="cell" id="cell-4"><img src="image4.jpg" alt="Puzzle Piece"></div>
+        <div class="cell" id="cell-5"><img src="image5.jpg" alt="Puzzle Piece"></div>
+        <div class="cell" id="cell-6"><img src="image6.jpg" alt="Puzzle Piece"></div>
+        <div class="cell" id="cell-7"><img src="image7.jpg" alt="Puzzle Piece"></div>
+        <div class="cell" id="cell-8"><img src="image8.jpg" alt="Puzzle Piece"></div>
+        <div class="cell" id="cell-9"><img src="image9.jpg" alt="Puzzle Piece"></div>
+    </div>
+
+    <script>
+        // This is a simple simulation. 
+        // Normally you would "unlock" via QR redirecting to specific URLs.
+        const urlParams = new URLSearchParams(window.location.search);
+        const unlockId = urlParams.get('unlock');
+        if (unlockId) {
+            document.getElementById(`cell-${unlockId}`).classList.add('unlocked');
+        }
+    </script>
+</body>
+</html>
